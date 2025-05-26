@@ -1,0 +1,54 @@
+<h2>User info</h2>
+
+<% if @user&.profile_image&.attached? %>
+  <%= image_tag @user.profile_image, width: 100, height: 100 %>
+<% else %>
+  <%= image_tag 'no_image.png', width: 100, height: 100 %>
+<% end %>
+
+<table class="table mt-2">
+  <tr>
+    <th>name</th>
+    <td><%= @user&.name %></td>
+  </tr>
+  <tr>
+    <th>introduction</th>
+    <td><%= @user&.introduction %></td>
+  </tr>
+</table>
+
+<% if @user && current_user == @user %>
+  <div class="text-center mt-2">
+    <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary w-100" do %>
+      <i class="fas fa-user-cog"></i>
+    <% end %>
+  </div>
+<% end %>
+
+<h2>New book</h2>
+
+<% if @book.errors.any? %>
+  <div class="alert alert-danger">
+    <ul class="mb-0">
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @book, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :body, "Opinion" %>
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+
+  <div class="form-group mt-2">
+    <%= f.submit "Create Book", class: "btn btn-success" %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+<div class="container mt-5 d-flex flex-column align-items-center">
+  <div class="text-center" style="max-width: 600px;">
+    <h1 class="fw-bold mb-4" style="font-size: 2.8rem;">
+      welcome to <i class="fa-solid fa-book"></i><strong>Bookers</strong> !!
+    </h1>
+  </div>
+
+  <div class="text-start" style="max-width: 600px;">
+    <p>
+      In <strong><i class="fa-solid fa-book"></i>Bookers</strong>,<br>
+      you can share and exchange your opinions, impressions, and emotions<br>
+      about various books!
+    </p>
+  </div>
+
+  <!-- ボタン：中央 -->
+  <div class="d-flex flex-column align-items-center mt-4">
+    <%= link_to 'Log in', new_user_session_path, class: 'btn btn-info mb-2', style: 'width: 200px;' %>
+    <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-success', style: 'width: 200px;' %>
+  </div>
+</div>
