@@ -1,6 +1,7 @@
 <h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+# カリキュラムに従い、form_for → form_with に変更
+<%= form_with model: resource, url: session_path(resource_name), local: true do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">

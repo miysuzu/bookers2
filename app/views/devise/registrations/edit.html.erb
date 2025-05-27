@@ -1,6 +1,7 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+# カリキュラムに従い、form_for → form_with に変更
+<%= form_with model: resource, url: registration_path(resource_name), method: :put, local: true do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
