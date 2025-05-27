@@ -22,7 +22,7 @@
 
         <div class="mb-3">
           <%= f.label :profile_image, "Image", class: "form-label" %>
-          <%= f.file_field :profile_image, class: "form-control" %>
+          <%= f.file_field :profile_image, class: "form-control-file user_image", accept: "image/*" %> <!-- ★修正 -->
         </div>
 
         <div class="mb-3">
@@ -30,7 +30,7 @@
           <%= f.text_area :introduction, class: "form-control", rows: 3 %>
         </div>
 
-        <%= f.submit "Update User", class: "btn btn-outline-secondary" %>
+        <%= f.submit "Update User", class: "btn btn-secondary" %>
       <% end %>
     </div>
   </div>

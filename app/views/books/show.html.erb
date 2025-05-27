@@ -1,12 +1,12 @@
 <div class="container mt-4">
   <div class="row">
     <!-- 左カラム：User info + New book -->
-    <div class="col-md-4">
+    <div class="col-md-3">
       <%= render 'books/sidebar' %>
     </div>
 
     <!-- 右カラム：Book detail -->
-    <div class="col-md-8">
+    <div class="col-md-8 offset-md-1">
       <h2 class="mb-3">Book detail</h2>
 
       <table class="table align-middle">
@@ -19,28 +19,31 @@
                 <%= image_tag 'no_image.png', width: 100, height: 100, class: "rounded" %>
               <% end %>
             </td>
+
             <td>
-              <h5 class="mb-1">
+              <h5 class="mb-1 d-inline-block">
                 <%= link_to @book.title, book_path(@book), class: "text-decoration-none fw-bold" %>
               </h5>
+
+              <% if current_user == @book.user %>
+                <span class="ms-2">
+                  <%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success me-1 edit_book_#{@book.id}" %>
+                  <%= link_to "Destroy", book_path(@book),
+                              method: :delete,
+                              data: { confirm: "本当に消しますか？" },
+                              class: "btn btn-sm btn-danger destroy_book_#{@book.id}" %>
+                </span>
+              <% end %>
+
               <p class="mb-1"><%= @book.body %></p>
-              <p class="text-muted">
+              <p class="text-muted mb-0">
                 <%= link_to @user.name, user_path(@user), class: "text-decoration-none" %>
               </p>
             </td>
-
-            <% if current_user == @book.user %>
-              <td class="text-end">
-                <%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-outline-success me-2" %>
-                <%= link_to "Destroy", book_path(@book),
-                            method: :delete,
-                            data: { confirm: "本当に消しますか？" },
-                            class: "btn btn-sm btn-outline-danger" %>
-              </td>
-            <% end %>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
+
