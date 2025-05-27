@@ -20,8 +20,9 @@
           <% @users.each do |user| %>
             <tr>
               <td>
+                <%# プロフィール画像の表示処理を追加 %>
                 <% if user.profile_image.attached? %>
-                  <%= image_tag user.profile_image, width: 80, height: 80 %>
+                  <%= image_tag user.profile_image, width: 80, height: 80, class: "rounded-circle" %>
                 <% else %>
                   <%= image_tag 'no_image.png', width: 80, height: 80 %>
                 <% end %>
@@ -35,4 +36,3 @@
     </div>
   </div>
 </div>
-

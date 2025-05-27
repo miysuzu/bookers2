@@ -13,12 +13,13 @@
         <tbody>
           <tr>
             <td style="width: 120px;">
-              <% if @book.image.attached? %>
-                <%= image_tag @book.image, width: 100, height: 100, class: "rounded" %>
-              <% else %>
-                <%= image_tag 'no_image.png', width: 100, height: 100, class: "rounded" %>
-              <% end %>
-            </td>
+            <%# @book.image → @book.user.profile_image に変更し、投稿者のプロフィール画像を表示するように修正（丸く表示） %>
+            <% if @book.user.profile_image.attached? %>
+              <%= image_tag @book.user.profile_image, width: 100, height: 100, class: "rounded-circle" %>
+            <% else %>
+              <%= image_tag 'no_image.png', width: 100, height: 100, class: "rounded-circle" %>
+            <% end %>
+          </td>
 
             <td>
               <h5 class="mb-1 d-inline-block">
@@ -45,4 +46,3 @@
       </table>
     </div>
   </div>
-</div>

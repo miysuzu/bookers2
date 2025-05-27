@@ -4,6 +4,7 @@
     <div class="col-md-3">
       <h2>User info</h2>
 
+      <%# プロフィール画像表示処理を追加 %>
       <% if @user.profile_image.attached? %>
         <%= image_tag @user.profile_image, width: 100, height: 100 %>
       <% else %>
@@ -54,24 +55,23 @@
       <h2>Books</h2>
       <table class="table table-hover">
         <thead>
-        <tr>
-        <th></th>
-        <th>Title</th>
-        <th>Opinion</th>
-        </tr>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+          </tr>
         </thead>
         <tbody>
           <% @books.each do |book| %>
             <tr>
               <td>
-                <% if book.image.attached? %>
+                <%# 投稿者のプロフィール画像表示処理を追加 %>
                 <%= link_to user_path(book.user) do %>
-                  <%= image_tag book.image, width: 100, height: 100 %>
+                  <% if book.user.profile_image.attached? %>
+                    <%= image_tag book.user.profile_image, width: 100, height: 100, class: "rounded-circle" %> <%# 丸く表示 %>
+                  <% else %>
+                    <%= image_tag 'no_image.png', width: 100, height: 100 %>
                   <% end %>
-                <% else %>
-                <%= link_to user_path(book.user) do %>
-                  <%= image_tag 'no_image.png', width: 100, height: 100 %>
-                <% end %>
                 <% end %>
               </td>
               <td><%= link_to book.title, book_path(book) %></td>
